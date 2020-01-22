@@ -1,0 +1,21 @@
+# Launch Plex on Red Room Android TV
+'1578734805493':
+  alias: Red Room TV
+  sequence:
+  - event: red_room_tv
+    event_data:
+      message: plex
+# Launch STB EMU on Red Room Android TV
+'1578736247561':
+  alias: Red Room TV 2
+  sequence:
+  - event: red_room_tv
+    event_data:
+      message: live_tv
+# Red Room Good Night
+'rr_good_night':
+  alias: Red Room Good Night
+  sequence:
+  - event: good_night
+    event_data:
+      message: sleep tight

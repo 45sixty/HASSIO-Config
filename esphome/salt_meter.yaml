@@ -1,0 +1,28 @@
+esphome:
+  name: salt_sensor
+  platform: ESP8266
+  board: esp12e
+
+wifi:
+  ssid: !secret ssid
+  password: !secret wifi_pass
+
+logger:
+
+api:
+
+ota:
+
+sensor:
+  - platform: ultrasonic
+    id: salt_sensor
+    trigger_pin: GPIO5
+    echo_pin: GPIO4
+    name: "Water Softener Level"
+    update_interval: 10s
+    filters:
+      filter_out: nan
+    timeout: 9m
+
+web_server:
+  port: 80

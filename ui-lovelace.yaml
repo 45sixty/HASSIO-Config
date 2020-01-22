@@ -1,0 +1,117 @@
+resources:
+  - type: js
+    url: /community_plugin/lovelace-card-templater/lovelace-card-templater.js 
+  - type: module
+    url: /community_plugin/lovelace-card-tools/card-tools.js
+  - type: module
+    url: /community_plugin/garbage-collection-card/garbage-collection-card.js
+background: var(--background-image)
+title: Home
+views:
+  - badges:
+      - entity: binary_sensor.updater
+      - entity: person.justin_borrego
+      - entity: sun.sun
+    cards:
+      - entity: media_player.living_room_speaker
+        type: media-control
+      - entity: media_player.vizio_small
+        type: media-control
+      - entity: media_player.android_tv
+        type: media-control
+      - entity: media_player.vizio_smartcast
+        type: media-control
+    path: default_view
+    title: Home
+  ### START RED ROOM ###
+  
+  - badges:
+      #- entity: sensor.waste
+    theme: ios-dark-mode
+    cards:
+      - cards:
+          - entity: script.1578734805493
+            icon: 'mdi:television-play'
+            name: PLEX
+            show_icon: true
+            show_name: true
+            tap_action:
+              action: toggle
+            type: entity-button
+          - entity: script.1578736247561
+            icon: 'mdi:television-classic'
+            name: LIVE TV
+            show_icon: true
+            show_name: true
+            tap_action:
+              action: toggle
+            type: entity-button
+          # - entity: switch.61770535cc50e36236d8
+          #   icon: 'mdi:lightbulb'
+          #   name: Light 2
+          #   tap_action:
+          #     action: toggle
+          #   type: entity-button
+          # - entity: switch.61770535dc4f2259b779
+          #   icon: 'mdi:lightbulb'
+          #   name: Light 3
+          #   tap_action:
+          #     action: toggle
+          #   type: entity-button
+          # - entity: light.c44f33a3c37d_192_168_86_238
+          #   name: Light Strip
+          #   tap_action:
+          #     action: toggle
+          #   type: entity-button
+          - entity: switch.red_room_2
+            name: Light 2
+            tap_action:
+              action: toggle
+            type: entity-button
+
+          - entity: switch.red_room_3
+            name: Light 3
+            tap_action:
+              action: toggle
+            type: entity-button
+
+          - entity: script.rr_good_night
+            icon: 'mdi:sleep'
+            name: Good Night
+            show_icon: true
+            show_name: true
+            tap_action:
+              action: toggle
+            type: entity-button
+        type: horizontal-stack
+    path: red-room
+    title: Red Room
+  ### END RED ROOM ###
+  - badges: []
+    theme: ios-dark-mode
+    cards:
+      - type: markdown
+        title: Lovelace
+        content: >
+          Welcome to your **Lovelace UI**.
+      - type: entities
+        entities:
+        - sensor.waste
+        - sensor.bulk_waste
+        - binary_sensor.tv_sensor
+        - sensor.water_softener_level
+        card:
+          type: entity
+          title: Trash
+      - type: markdown
+        content: >
+          ## Lovelace
+          Starting with Home Assistant 0.72, we're experimenting with a new way of defining your interface. We're calling it the **Lovelace UI**.
+      - type: gauge
+        name: Water Softener Level
+        unit: 'M'
+        min: 0
+        max: 5
+        entity: sensor.water_softener_level
+    path: test-room
+    title: Test Room

@@ -1,0 +1,93 @@
+
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+
+# Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+# http:
+#   base_url: example.duckdns.org:8123
+
+frontend:
+  themes: !include_dir_merge_named themes
+
+# MariaDb
+recorder:
+  db_url: !secret db_path
+
+# Text to speech
+tts:
+  - platform: google_translate
+
+lovelace:
+  mode: yaml
+
+hacs:
+  theme: True
+
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+scene: !include scenes.yaml
+
+media_player:
+  # VizioTV - RedRoom
+  - platform: vizio
+    host: 192.168.86.122:9000
+    access_token: B91D94
+  
+  # AndroidTV - Red Room
+  - platform: androidtv
+    host: 192.168.86.242
+    name: Android TV
+    adb_server_ip: 127.0.0.1
+    adb_server_port: 5037
+
+# Notifications: AndroidTV
+notify:
+- platform: nfandroidtv
+  name: red_room
+  host: 192.168.86.242
+
+switch:
+  # Middle Light Red Room
+  - platform: mqtt
+    name: "Red Room 2"
+    command_topic: "cmnd/switch02/POWER"
+    state_topic: "stat/switch02/POWER"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+  # Back Light Red Room
+  - platform: mqtt
+    name: "Red Room 3"
+    command_topic: "cmnd/switch03/POWER"
+    state_topic: "stat/switch03/POWER"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+
+# light:
+#   - platform: flux_led
+#     automatic_add: true
+    
+binary_sensor:
+  - platform: ping
+    name: tv_sensor
+    host: 192.168.86.20
+    count: 2
+    scan_interval: 15
+
+# Example configuration.yaml entry
+garbage_collection:
+  sensors:
+  - name: waste # Each week on Monday and Wednesday. No collection on Christmas, added extra collection on the 27th
+    frequency: "weekly"
+    collection_days:
+    - sat
+    exclude_dates:
+    - '2020-12-25'
+    verbose_state: True
+  - name: bulk waste
+    frequency: "even-weeks"
+    collection_days:
+    - sat
+    verbose_state: True
