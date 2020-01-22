@@ -64,12 +64,14 @@ views:
           #     action: toggle
           #   type: entity-button
           - entity: switch.red_room_2
+            icon: 'mdi:lightbulb'
             name: Light 2
             tap_action:
               action: toggle
             type: entity-button
 
           - entity: switch.red_room_3
+            icon: 'mdi:lightbulb'
             name: Light 3
             tap_action:
               action: toggle
@@ -84,6 +86,9 @@ views:
               action: toggle
             type: entity-button
         type: horizontal-stack
+      # ALL RedRoom Lights
+      - type: entity-button
+        entity: group.red_room
     path: red-room
     title: Red Room
   ### END RED ROOM ###

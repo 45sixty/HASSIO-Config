@@ -91,3 +91,10 @@ garbage_collection:
     collection_days:
     - sat
     verbose_state: True
+
+group:
+  red_room:
+    name: Red Room
+    entities:
+      - switch.red_room_2
+      - switch.red_room_3
