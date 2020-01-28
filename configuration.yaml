@@ -69,12 +69,12 @@ switch:
 #   - platform: flux_led
 #     automatic_add: true
     
-binary_sensor:
-  - platform: ping
-    name: tv_sensor
-    host: 192.168.86.20
-    count: 2
-    scan_interval: 15
+# binary_sensor:
+#   - platform: ping
+#     name: tv_sensor
+#     host: 192.168.86.20
+#     count: 2
+#     scan_interval: 15
 
 # Example configuration.yaml entry
 garbage_collection:
@@ -91,6 +91,17 @@ garbage_collection:
     collection_days:
     - sat
     verbose_state: True
+
+light:
+  - platform: mqtt
+    name: "RRLED"
+    command_topic: "cmnd/LED1/power"
+    state_topic: "stat/LED1/POWER"
+    rgb_state_topic: "stat/LED1/color"
+    rgb_command_topic: "cmnd/LED1/color"
+    brightness_state_topic: "stat/LED1/dimmer"
+    brightness_command_topic: "cmnd/LED1/dimmer"
+    retain: true
 
 group:
   red_room:

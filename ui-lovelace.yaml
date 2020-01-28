@@ -89,6 +89,8 @@ views:
       # ALL RedRoom Lights
       - type: entity-button
         entity: group.red_room
+      - type: light
+        entity: light.rrled
     path: red-room
     title: Red Room
   ### END RED ROOM ###
@@ -103,8 +105,8 @@ views:
         entities:
         - sensor.waste
         - sensor.bulk_waste
-        - binary_sensor.tv_sensor
-        - sensor.water_softener_level
+        # - binary_sensor.tv_sensor
+        # - sensor.water_softener_level
         card:
           type: entity
           title: Trash
@@ -112,11 +114,11 @@ views:
         content: >
           ## Lovelace
           Starting with Home Assistant 0.72, we're experimenting with a new way of defining your interface. We're calling it the **Lovelace UI**.
-      - type: gauge
-        name: Water Softener Level
-        unit: 'M'
-        min: 0
-        max: 5
-        entity: sensor.water_softener_level
+      # - type: gauge
+      #   name: Water Softener Level
+      #   unit: 'M'
+      #   min: 0
+      #   max: 5
+      #   entity: sensor.water_softener_level
     path: test-room
     title: Test Room
