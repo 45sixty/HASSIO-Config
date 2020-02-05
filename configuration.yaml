@@ -47,6 +47,19 @@ notify:
   name: red_room
   host: 192.168.86.242
 
+sensor:
+  - platform: darksky
+    api_key: !secret darksky
+    forecast:
+      - 0
+    hourly_forecast:
+      - 0
+      - 1
+    monitored_conditions:
+      - summary
+      - icon
+      - temperature
+
 switch:
   # Middle Light Red Room
   - platform: mqtt
