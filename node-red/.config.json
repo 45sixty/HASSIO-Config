@@ -1443,7 +1443,7 @@
   "node-red-contrib-alexa-local": {
    "name": "node-red-contrib-alexa-local",
    "version": "0.3.24",
-   "local": false,
+   "local": true,
    "nodes": {
     "alexa-local": {
      "name": "alexa-local",

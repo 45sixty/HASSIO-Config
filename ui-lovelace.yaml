@@ -26,7 +26,10 @@ views:
   ### START RED ROOM ###
   
   - badges:
-      #- entity: sensor.waste
+      - entity: sensor.shelly_shht_1_f2b41a_temperature
+        name: RR TEMP
+      - entity: sensor.shelly_shht_1_f2b41a_humidity
+        name: RR HUM
     theme: ios-dark-mode
     cards:
       - cards:
