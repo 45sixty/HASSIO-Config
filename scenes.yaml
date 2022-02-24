@@ -1,0 +1,23 @@
+- id: '1645214926592'
+  name: New Scene
+  entities:
+    group.red_room:
+      entity_id:
+      - switch.red_room_2
+      - switch.red_room_3
+      order: 0
+      friendly_name: Red Room
+      state: 'off'
+  icon: mdi:alarm-light-off
+- id: '1645380338248'
+  name: Red Room ON
+  entities:
+    switch.red:
+      friendly_name: red
+      state: 'off'
+    switch.red_room_2:
+      friendly_name: Red Room 2
+      state: 'on'
+    switch.red_room_3:
+      friendly_name: Red Room 3
+      state: 'off'

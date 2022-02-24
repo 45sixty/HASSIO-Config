@@ -12,6 +12,7 @@ home-assistant_v2.db
 home-assistant.log
 
 # Ignore folders.
+.tts
 .storage
 .cloud
 .google.token

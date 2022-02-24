@@ -1,1 +1,104 @@
-[]
+- id: '1645254773628'
+  alias: TTS Test
+  description: ''
+  trigger: []
+  condition: []
+  action:
+  - service: tts.cloud_say
+    data:
+      entity_id: media_player.nesthub9c88
+      message: The Red Room lights are on.
+  - service: notify.shield_office
+    data:
+      message: The Lights are on in the Red Room.
+      title: Announcement
+  mode: single
+- id: '1645350836441'
+  alias: Exterior Lights (on at sunset)
+  description: ''
+  trigger:
+  - platform: sun
+    event: sunset
+  condition: []
+  action:
+  - type: turn_on
+    device_id: b1bb106c789907a8ee3319ee982db774
+    entity_id: switch.porch_light
+    domain: switch
+  - service: media_player.volume_set
+    data:
+      volume_level: 0.69
+    target:
+      device_id: ceeae87b6337466893fe972c3353c046
+  - service: tts.cloud_say
+    data:
+      entity_id: media_player.living_room_speaker
+      message: exterior lights have been activated
+  - service: notify.mobile_app_justin
+    data:
+      message: Exterior lights have been activated.
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 15
+      milliseconds: 0
+  - service: media_player.volume_set
+    data:
+      volume_level: 0.41
+    target:
+      device_id: ceeae87b6337466893fe972c3353c046
+  mode: single
+- id: '1645350970848'
+  alias: Exterior Lights (off at sunrise)
+  description: ''
+  trigger:
+  - platform: sun
+    event: sunrise
+    offset: '0'
+  condition: []
+  action:
+  - type: turn_off
+    device_id: b1bb106c789907a8ee3319ee982db774
+    entity_id: switch.porch_light
+    domain: switch
+  mode: single
+- id: '1645380209448'
+  alias: Red Room Lights
+  description: ''
+  trigger:
+  - type: motion
+    platform: device
+    device_id: 033c240d37a03d7eecfc12a3c7c5d0f1
+    entity_id: binary_sensor.lv_sensor_motion
+    domain: binary_sensor
+  condition:
+  - condition: state
+    entity_id: input_text.current_scene
+    state: '"Red Room Lights"'
+  action:
+  - scene: scene.red_room_on
+  - service: tts.cloud_say
+    data:
+      entity_id: media_player.nesthub9c88
+      message: You are entering a secure area, please vacate the area or the police
+        will be notified.
+  mode: single
+- id: '1645411606093'
+  alias: Alarm Trigger (AWAY)
+  description: Trigger Alarm in AWAY Mode
+  trigger:
+  - type: motion
+    platform: device
+    device_id: 99ad2869541931d20fd0a3de5be13f57
+    entity_id: binary_sensor.red_motion
+    domain: binary_sensor
+  condition:
+  - condition: state
+    entity_id: alarm_control_panel.home_alarm
+    state: armed_away
+  action:
+  - service: tts.cloud_say
+    data:
+      entity_id: media_player.nesthub9c88
+      message: Intruder!  Alarm has been triggered!
+  mode: single

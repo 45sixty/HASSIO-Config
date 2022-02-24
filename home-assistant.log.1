@@ -1,0 +1,98 @@
+2022-02-20 15:48:21 WARNING (SyncWorker_0) [homeassistant.util.yaml.loader] YAML file /config/configuration.yaml contains duplicate key "automation". Check lines 28 and 47
+2022-02-20 15:48:21 WARNING (SyncWorker_0) [homeassistant.util.yaml.loader] YAML file /config/configuration.yaml contains duplicate key "group". Check lines 27 and 171
+2022-02-20 15:48:21 WARNING (SyncWorker_0) [homeassistant.loader] We found a custom integration garbage_collection which has not been tested by Home Assistant. This component might cause stability problems, be sure to disable it if you experience issues with Home Assistant
+2022-02-20 15:48:21 ERROR (SyncWorker_0) [homeassistant.loader] The custom integration 'garbage_collection' does not have a version key in the manifest file and was blocked from loading. See https://developers.home-assistant.io/blog/2021/01/29/custom-integration-changes#versions for more details
+2022-02-20 15:48:21 WARNING (SyncWorker_0) [homeassistant.loader] We found a custom integration hacs which has not been tested by Home Assistant. This component might cause stability problems, be sure to disable it if you experience issues with Home Assistant
+2022-02-20 15:48:21 WARNING (SyncWorker_1) [homeassistant.loader] We found a custom integration shelly which has not been tested by Home Assistant. This component might cause stability problems, be sure to disable it if you experience issues with Home Assistant
+2022-02-20 15:48:21 ERROR (SyncWorker_1) [homeassistant.loader] The custom integration 'shelly' does not have a version key in the manifest file and was blocked from loading. See https://developers.home-assistant.io/blog/2021/01/29/custom-integration-changes#versions for more details
+2022-02-20 15:48:21 WARNING (MainThread) [homeassistant.components.lovelace] Resources need to be specified in your configuration.yaml. Please see the docs
+2022-02-20 15:48:23 WARNING (MainThread) [homeassistant.components.webhook] Received message for unregistered webhook 78e74a616918119c727add1d3a1e8375cf82bfbb9539a3e9df731e0e882495bc from 192.168.86.211
+2022-02-20 15:48:23 WARNING (MainThread) [homeassistant.components.webhook] Received message for unregistered webhook 78e74a616918119c727add1d3a1e8375cf82bfbb9539a3e9df731e0e882495bc from 192.168.86.211
+2022-02-20 15:48:27 ERROR (MainThread) [homeassistant.components.media_player] The vizio platform for the media_player integration does not support platform setup. Please remove it from your config.
+2022-02-20 15:48:27 ERROR (MainThread) [homeassistant.components.websocket_api.http.connection] [139637746166512] Received invalid command: mobile_app/push_notification_channel
+2022-02-20 15:48:27 WARNING (MainThread) [androidtv.adb_manager.adb_manager_async] Couldn't connect to 192.168.86.242:5555 via ADB server 127.0.0.1:5037 because the server is not connected to the device
+2022-02-20 15:48:27 WARNING (MainThread) [homeassistant.components.androidtv.config_flow] Could not connect to Android TV / Fire TV device at 192.168.86.242:5555 using ADB server at 127.0.0.1:5037
+2022-02-20 15:48:27 WARNING (SyncWorker_1) [pychromecast.dial] Failed to determine cast type
+2022-02-20 15:48:30 ERROR (MainThread) [homeassistant.components.nfandroidtv.config_flow] Error connecting to device at 192.168.86.242
+2022-02-20 15:48:30 WARNING (MainThread) [aioesphomeapi.reconnect_logic] Can't connect to ESPHome API for salt_meter @ salt_meter.local: Error resolving IP address: [Errno -2] Name does not resolve
+2022-02-20 15:48:30 WARNING (MainThread) [aioesphomeapi.reconnect_logic] Can't connect to ESPHome API for salt_sensor @ salt_sensor.local: Error resolving IP address: [Errno -2] Name does not resolve
+2022-02-20 15:48:33 ERROR (MainThread) [homeassistant.components.notify] Error setting up platform nfandroidtv
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/urllib3/connection.py", line 174, in _new_conn
+    conn = connection.create_connection(
+  File "/usr/local/lib/python3.9/site-packages/urllib3/util/connection.py", line 95, in create_connection
+    raise err
+  File "/usr/local/lib/python3.9/site-packages/urllib3/util/connection.py", line 85, in create_connection
+    sock.connect(sa)
+OSError: [Errno 113] Host is unreachable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/urllib3/connectionpool.py", line 703, in urlopen
+    httplib_response = self._make_request(
+  File "/usr/local/lib/python3.9/site-packages/urllib3/connectionpool.py", line 398, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "/usr/local/lib/python3.9/site-packages/urllib3/connection.py", line 239, in request
+    super(HTTPConnection, self).request(method, url, body=body, headers=headers)
+  File "/usr/local/lib/python3.9/http/client.py", line 1279, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "/usr/local/lib/python3.9/http/client.py", line 1325, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "/usr/local/lib/python3.9/http/client.py", line 1274, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/usr/local/lib/python3.9/http/client.py", line 1034, in _send_output
+    self.send(msg)
+  File "/usr/local/lib/python3.9/http/client.py", line 974, in send
+    self.connect()
+  File "/usr/local/lib/python3.9/site-packages/urllib3/connection.py", line 205, in connect
+    conn = self._new_conn()
+  File "/usr/local/lib/python3.9/site-packages/urllib3/connection.py", line 186, in _new_conn
+    raise NewConnectionError(
+urllib3.exceptions.NewConnectionError: <urllib3.connection.HTTPConnection object at 0x7efff358cbb0>: Failed to establish a new connection: [Errno 113] Host is unreachable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/requests/adapters.py", line 440, in send
+    resp = conn.urlopen(
+  File "/usr/local/lib/python3.9/site-packages/urllib3/connectionpool.py", line 785, in urlopen
+    retries = retries.increment(
+  File "/usr/local/lib/python3.9/site-packages/urllib3/util/retry.py", line 592, in increment
+    raise MaxRetryError(_pool, url, error or ResponseError(cause))
+urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='192.168.86.242', port=7676): Max retries exceeded with url: / (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7efff358cbb0>: Failed to establish a new connection: [Errno 113] Host is unreachable'))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.9/site-packages/notifications_android_tv/notifications.py", line 60, in __init__
+    requests.get(self.url, timeout=self.DEFAULT_TIMEOUT)
+  File "/usr/local/lib/python3.9/site-packages/requests/api.py", line 75, in get
+    return request('get', url, params=params, **kwargs)
+  File "/usr/local/lib/python3.9/site-packages/requests/api.py", line 61, in request
+    return session.request(method=method, url=url, **kwargs)
+  File "/usr/local/lib/python3.9/site-packages/requests/sessions.py", line 529, in request
+    resp = self.send(prep, **send_kwargs)
+  File "/usr/local/lib/python3.9/site-packages/requests/sessions.py", line 645, in send
+    r = adapter.send(request, **kwargs)
+  File "/usr/local/lib/python3.9/site-packages/requests/adapters.py", line 519, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPConnectionPool(host='192.168.86.242', port=7676): Max retries exceeded with url: / (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7efff358cbb0>: Failed to establish a new connection: [Errno 113] Host is unreachable'))
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/src/homeassistant/homeassistant/components/notify/legacy.py", line 61, in async_setup_platform
+    notify_service = await platform.async_get_service(
+  File "/usr/src/homeassistant/homeassistant/components/nfandroidtv/notify.py", line 91, in async_get_service
+    notify = await hass.async_add_executor_job(Notifications, config.get(CONF_HOST))
+  File "/usr/local/lib/python3.9/concurrent/futures/thread.py", line 52, in run
+    result = self.fn(*self.args, **self.kwargs)
+  File "/usr/local/lib/python3.9/site-packages/notifications_android_tv/notifications.py", line 62, in __init__
+    raise ConnectError(err) from err
+notifications_android_tv.notifications.ConnectError: HTTPConnectionPool(host='192.168.86.242', port=7676): Max retries exceeded with url: / (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x7efff358cbb0>: Failed to establish a new connection: [Errno 113] Host is unreachable'))
+2022-02-20 16:05:01 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from 192.168.86.25 (192.168.86.25). (Mozilla/5.0 (iPad; CPU OS 15_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/98.0.4758.85 Mobile/15E148 Safari/604.1)
+2022-02-20 16:05:14 WARNING (MainThread) [homeassistant.components.http.ban] Login attempt or request with invalid authentication from 192.168.86.25 (192.168.86.25). (Mozilla/5.0 (iPad; CPU OS 15_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) CriOS/98.0.4758.85 Mobile/15E148 Safari/604.1)
+2022-02-20 16:09:43 WARNING (SyncWorker_2) [homeassistant.util.yaml.loader] YAML file /config/configuration.yaml contains duplicate key "group". Check lines 27 and 171
+2022-02-20 16:09:46 WARNING (SyncWorker_3) [homeassistant.util.yaml.loader] YAML file /config/configuration.yaml contains duplicate key "group". Check lines 27 and 171
+2022-02-20 16:09:49 ERROR (MainThread) [homeassistant.components.hassio.handler] Client error on /homeassistant/restart request Server disconnected

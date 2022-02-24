@@ -4,7 +4,7 @@ resources:
   - type: module
     url: /community_plugin/lovelace-card-tools/card-tools.js
   - type: module
-    url: /community_plugin/garbage-collection-card/garbage-collection-card.js
+    #url: /community_plugin/garbage-collection-card/garbage-collection-card.js
 background: var(--background-image)
 title: Home
 views:
@@ -26,9 +26,9 @@ views:
   ### START RED ROOM ###
   
   - badges:
-      - entity: sensor.shelly_shht_1_f2b41a_temperature
+      - entity:  sensor.shelly_shht_1_f2b41a_temperature
         name: RR TEMP
-      - entity: sensor.shelly_shht_1_f2b41a_humidity
+      - entity:  sensor.shelly_shht_1_f2b41a_humidity
         name: RR HUM
     theme: ios-dark-mode
     cards:
@@ -104,15 +104,15 @@ views:
         title: Lovelace
         content: >
           Welcome to your **Lovelace UI**.
-      - type: entities
-        entities:
-        - sensor.waste
-        - sensor.bulk_waste
+    #   - type: entities
+    #     entities:
+    #     - sensor.waste
+    #     - sensor.bulk_waste
         # - binary_sensor.tv_sensor
         # - sensor.water_softener_level
-        card:
-          type: entity
-          title: Trash
+        # card:
+        #   type: entity
+        #   title: Trash
       - type: markdown
         content: >
           ## Lovelace

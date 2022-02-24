@@ -1,7 +1,6 @@
-
 # Configure a default setup of Home Assistant (frontend, api, etc)
 default_config:
-
+cloud:
 # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
 # http:
 #   base_url: example.duckdns.org:8123
@@ -20,8 +19,8 @@ tts:
 lovelace:
   mode: yaml
 
-hacs:
-  theme: True
+# hacs:
+#   theme: True
 
 shelly:
 
@@ -30,15 +29,57 @@ automation: !include automations.yaml
 script: !include scripts.yaml
 scene: !include scenes.yaml
 
+# Alarm control panel
+alarm_control_panel:
+  - platform: manual
+    name: Home Alarm
+    code: !secret alarm_code
+    arming_time: 30
+    delay_time: 20
+    trigger_time: 4
+    disarmed:
+      trigger_time: 0
+    armed_home:
+      arming_time: 0
+      delay_time: 0
+
+# # Alarm Triggers (Away)
+# automation:
+#   - alias: 'Trigger alarm while armed away'
+#     trigger:
+#       - platform: state
+#         entity_id: binary_sensor.lv_sensor_motion
+#         to: "Detected"
+#       #more platforms
+#     condition: 
+#       - condition: state
+#         entity_id: alarm_control_panel.home_alarm
+#         state: armed_away
+#     action:
+#       service: alarm_control_panel.alarm_trigger
+#       target:
+#         entity_id: alarm_control_panel.home_alarm
+    
+#   - alias: 'Send notification when alarm is triggered'
+#     trigger:
+#       - platform: state
+#         entity_id: alarm_control_panel.home_alarm
+#         to: "triggered"
+#     action:
+#       - service: notify.notify
+#         data:
+#           message: "INTRUDER!  The alarm has been triggered."
+
+
 media_player:
   # VizioTV - RedRoom
   - platform: vizio
     host: 192.168.86.122:9000
-    access_token: B91D94
+    access_token: !secret red_vizio_token
   
-  # AndroidTV - Red Room
+  # NVIDIA SHIELD - Red Room
   - platform: androidtv
-    host: 192.168.86.242
+    host: 192.168.86.221
     name: Android TV
     adb_server_ip: 127.0.0.1
     adb_server_port: 5037
@@ -47,7 +88,7 @@ media_player:
 notify:
 - platform: nfandroidtv
   name: red_room
-  host: 192.168.86.242
+  host: 192.168.86.221
 
 sensor:
   - platform: darksky
@@ -79,33 +120,6 @@ switch:
     qos: 1
     payload_on: "ON"
     payload_off: "OFF"
-
-# light:
-#   - platform: flux_led
-#     automatic_add: true
-    
-# binary_sensor:
-#   - platform: ping
-#     name: tv_sensor
-#     host: 192.168.86.20
-#     count: 2
-#     scan_interval: 15
-
-# Example configuration.yaml entry
-garbage_collection:
-  sensors:
-  - name: waste # Each week on Monday and Wednesday. No collection on Christmas, added extra collection on the 27th
-    frequency: "weekly"
-    collection_days:
-    - sat
-    exclude_dates:
-    - '2020-12-25'
-    verbose_state: True
-  - name: bulk waste
-    frequency: "even-weeks"
-    collection_days:
-    - sat
-    verbose_state: True
 
 light:
   - platform: mqtt
